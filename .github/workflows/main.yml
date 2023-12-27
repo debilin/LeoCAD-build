@@ -19,10 +19,9 @@ jobs:
         latest: true
         fileName: "*.AppImage"
 
-    - name: Install dependencies
-      run: sudo apt-get install -y ruby
+    - name: Install fpm
+      run: sudo gem install fpm && fpm --version
         
-
     - name: Create Debian package
       run: |
         bash build.sh

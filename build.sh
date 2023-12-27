@@ -1,7 +1,5 @@
 #! /bin/bash
 
-gem install fpm && fpm --version
-
 version=${{steps.<step-id>.outputs.tag_name}}
 
 fpm \
