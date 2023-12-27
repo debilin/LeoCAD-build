@@ -14,10 +14,10 @@ jobs:
 
     - name: Download release binary
       uses: robinraju/release-downloader@v1.8
-        with:
-          repository: "leozide/leocad"
-          latest: true
-          fileName: "*.AppImage"
+      with:
+        repository: "leozide/leocad"
+        latest: true
+        fileName: "*.AppImage"
 
     - name: Create Debian package
       run: |
