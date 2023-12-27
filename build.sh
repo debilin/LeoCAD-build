@@ -1,6 +1,5 @@
 #! /bin/bash
 
-apt-get install -y ruby
 gem install fpm && fpm --version
 
 version=${{steps.<step-id>.outputs.tag_name}}
