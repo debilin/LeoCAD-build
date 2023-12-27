@@ -25,5 +25,7 @@ jobs:
         
     - name: Create Debian package
       run: |
+        echo ${{steps.download_release.outputs.tag_name}}
+        echo ${{ fromJson(steps.download_release.outputs.downloaded_files)[0] }}
         bash build.sh
 
