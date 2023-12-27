@@ -1,6 +1,6 @@
 #! /bin/bash
 
-version=${{steps.<step-id>.outputs.tag_name}}
+version=${{steps.download_release.outputs.tag_name}}
 
 fpm \
   -s dir -t deb \
