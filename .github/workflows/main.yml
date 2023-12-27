@@ -1,0 +1,26 @@
+name: Package LeoCAD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-debian:
+    runs-on: debian-latest
+
+    steps:
+    - name: Checkout repository
+      - uses: actions/checkout@v2
+
+    - name: Download release binary
+      - uses: robinraju/release-downloader@v1.8
+        with:
+          repository: "leozide/leocad"
+          latest: true
+          fileName: "*.AppImage"
+
+    - name: Create Debian package
+      run: |
+        bash build.sh
+
