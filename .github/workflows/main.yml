@@ -25,7 +25,17 @@ jobs:
         
     - name: Create Debian package
       run: |
-        echo ${{steps.download_release.outputs.tag_name}}
-        echo ${{ fromJson(steps.download_release.outputs.downloaded_files)[0] }}
-        bash build.sh
+        fpm \
+          -s dir -t deb \
+          -p LeoCAD-${{steps.download_release.outputs.tag_name}}-1-amd64.deb \
+          --name LeoCAD \
+          --license agpl3 \
+          --version ${{steps.download_release.outputs.tag_name}} \
+          --architecture amd64 \
+          --depends bash --depends libfuse2 \
+          --description "A CAD application for creating virtual LEGO models." \
+          --url "https://www.leocad.org/" \
+          --maintainer "debilin <croninlucio@gmail.com>" \
+          --after-install ./afterinstall.sh \
+            ${{ fromJson(steps.download_release.outputs.downloaded_files)[0] }}=/usr/local/bin/leocad
 
