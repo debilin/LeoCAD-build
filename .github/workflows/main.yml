@@ -3,7 +3,7 @@ name: Package LeoCAD
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-ubuntu:
